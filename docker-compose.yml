@@ -1,0 +1,35 @@
+services:
+  anonycow-server:
+    build: .
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npx prisma db push
+        create-admin --username=mohammed --password=123456789
+        nohup ./runPrismaStudio.sh &
+        node index.js
+    ports:
+      - "5000:80"
+    depends_on:
+      - redis-stack-server
+      - db
+    networks:
+      - anonycow-network
+
+  redis-stack-server:
+    image: "redis/redis-stack-server:latest"
+    networks:
+      - anonycow-network
+
+  db:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: anonycow
+    networks:
+      - anonycow-network
+
+networks:
+  anonycow-network: {}
