@@ -1,6 +1,7 @@
 services:
   anonycow-server:
     build: .
+    image: anonycowcr.azurecr.io/anonycow-server
     command:
       - /bin/sh
       - -c
@@ -10,7 +11,7 @@ services:
         nohup ./runPrismaStudio.sh &
         node index.js
     ports:
-      - "5000:80"
+      - "80:80"
     depends_on:
       - redis-stack-server
       - db
