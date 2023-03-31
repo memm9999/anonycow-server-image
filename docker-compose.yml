@@ -1,7 +1,7 @@
 services:
   anonycow-server:
     build: .
-    image: anonycowcr.azurecr.io/anonycow-server
+    image: "memm9999/anonycow-server"
     command:
       - /bin/sh
       - -c
@@ -20,17 +20,6 @@ services:
 
   redis-stack-server:
     image: "redis/redis-stack-server:latest"
-    networks:
-      - anonycow-network
-
-  db:
-    image: "postgres"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456789
-      POSTGRES_DB: anonycow
-    ports:
-      - "5432:5432"
     networks:
       - anonycow-network
 
