@@ -1,7 +1,7 @@
 services:
   anonycow-server:
     build: .
-    image: "memm9999/anonycow-server"
+    image: "memm9999/anonycow-server:aca"
     command:
       - /bin/sh
       - -c
@@ -12,15 +12,3 @@ services:
         node index.js
     ports:
       - "80:80"
-    depends_on:
-      - redis-stack-server
-    networks:
-      - anonycow-network
-
-  redis-stack-server:
-    image: "redis/redis-stack-server:latest"
-    networks:
-      - anonycow-network
-
-networks:
-  anonycow-network: {}
