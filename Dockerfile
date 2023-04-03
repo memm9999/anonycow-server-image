@@ -9,4 +9,4 @@ COPY ./runPrismaStudio.sh .
 RUN chmod +x ./runPrismaStudio.sh
 RUN npm link
 RUN npx prisma generate
-ENTRYPOINT ['bash', './entrypoint.sh']
+ENTRYPOINT ["bash", "./entrypoint.sh"]
