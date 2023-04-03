@@ -9,7 +9,4 @@ COPY ./runPrismaStudio.sh .
 RUN chmod +x ./runPrismaStudio.sh
 RUN npm link
 RUN npx prisma generate
-RUN npx prisma db push
-RUN create-admin --username=mohammed --password=123456789
-RUN nohup ./runPrismaStudio.sh &
-RUN node index.js
+ENTRYPOINT ['bash', './entrypoint.sh']
