@@ -6,7 +6,9 @@ RUN npm install --production
 COPY ./.env .
 COPY ./anonycow-server .
 COPY ./runPrismaStudio.sh .
+COPY ./entrypoint.sh .
 RUN chmod +x ./runPrismaStudio.sh
+RUN chmod +x ./entrypoint.sh
 RUN npm link
 RUN npx prisma generate
 ENTRYPOINT ["bash", "./entrypoint.sh"]
